@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+              <ul class="steps">
+                <li class="is-active">Step 1</li>
+                <li>Step 2</li>
+                <li>Step 3</li>
+              </ul>
+              
+              <form class="form-wrapper" method="POST">
+                    <fieldset class="section is-active">
+                        <h3>Personal Details</h3>
+                        <input type="text" name="name" id="name" placeholder="Name">
+                        <input type="text" name="username" id="username" placeholder="Username">
+                        <input type="text" name="email" id="email" placeholder="Email Address">
+                        <input type="text" name="email" id="email" placeholder="Email">
+                        <div class="button">Next</div>
+                        <div class="center">
+                            <p>Already have an account?</p>
+                            <a href="signin.html">Login</a>
+                        </div>
+                    </fieldset>
+                    <fieldset class="section">
+                        <h3>Contact Info</h3>
+                        <input type="text" name="address" id="address" placeholder="Contact Address">
+                        <input type="text" name="number" id="number" placeholder="Phone number">
+                        <input type="text" name="zip_code" id="zip_code" placeholder="Zip / Postal">
+                        <div class="button">Next</div>
+                    </fieldset>
+                    <fieldset class="section">
+                        <h3>Choose a Password</h3>
+                        <input type="password" name="password" id="password" placeholder="Password">
+                        <input type="password" name="password2" id="password2" placeholder="Re-enter Password">
+                        <div class="button">Next</div>
+                    </fieldset>
+                    <fieldset class="section">
+                        <h3>Account Created!</h3>
+                        <p>Your account has now been created sucessfully!</p>
+                        <a class="submit button" href="signin.html">Login</a>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.js"></script>
+	  	<script src="assets/js/app.js"></script>
+</body>
+</html>
