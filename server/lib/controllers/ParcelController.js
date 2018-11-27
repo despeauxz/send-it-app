@@ -41,7 +41,7 @@ class ParcelController {
     }
 
     parcels.push(parcel);
-		res.json({
+		res.status(201.json({
 			status: 200,
 			message: 'Parcel successfully created',
 			data: parcel,
