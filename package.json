@@ -7,7 +7,7 @@
     "start": "nodemon --exec babel-node -- ./server/lib/app.js",
     "coverage": "npm run merge:lcov && cat ./coverage/lcov.info | coveralls",
     "merge:lcov": "cat ./coverage/lcov.*.info > ./coverage/lcov.info",
-    "test": "mocha ./server/tests/test.js --recursive --timeout 50000 --exit"
+    "test": "mocha ./server/tests/tests.js --require babel-register --recursive --timeout 50000 --exit"
   },
   "repository": {
     "type": "git",

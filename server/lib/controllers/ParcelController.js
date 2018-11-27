@@ -13,7 +13,7 @@ class ParcelController {
    * @param {object} res
    * @returns {(function|object)} Function next() or JSON object
    */
-  static async getParcels(req, res) {
+  static getParcels(req, res) {
     return res.json({
       status: 200,
       data: parcels,
