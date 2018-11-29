@@ -4,9 +4,12 @@
   "description": "A courier delivery web application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node -- ./server/lib/app.js",
-    "coverage": "npm run merge:lcov && cat ./coverage/lcov.info | coveralls",
-    "merge:lcov": "cat ./coverage/lcov.*.info > ./coverage/lcov.info",
+    "start": "node ./dist/lib/app.js",
+    "start:dev": "nodemon --exec babel-node -- ./server/lib/app.js",
+    "clean": "rm -rf dist coverage .nyc_output",
+    "build": "mkdir dist && babel server -d dist",
+    "coverage": "istanbul cover _mocha server/tests/tests.js -- --require babel-register",
+    "nyc": "nyc --extension .es6 --reporter=lcov --reporter=text mocha 'server/tests/test.js'  --compilers babel-register",
     "test": "mocha ./server/tests/tests.js --require babel-register --recursive --timeout 50000 --exit"
   },
   "repository": {
@@ -25,6 +28,8 @@
   },
   "homepage": "https://github.com/despeauxz/send-it-app#readme",
   "dependencies": {
+    "@babel/core": "^7.1.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-register": "^6.26.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
@@ -41,6 +46,7 @@
     "@types/chai": "^4.1.7",
     "@types/supertest": "^2.0.6",
     "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.2.0",
@@ -51,6 +57,7 @@
     "eslint-plugin-import": "^2.14.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.7",
+    "nyc": "^13.1.0"
   }
 }
