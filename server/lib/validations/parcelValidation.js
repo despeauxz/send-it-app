@@ -6,13 +6,13 @@ export default {
     createParcel: [
         check('title')
             .trim()
-            .exists().withMessage('Title is required')
+            .exists().withMessage('The title field is required')
             .custom(value => notEmpty(value, 'Title field cannot be left blank'))
             .isLength({ min: 4, max: 50 })
             .withMessage('Parcel title must be between 4 and 50'),
         check('weight')
             .trim()
-            .exists().withMessage('Weight is required')
+            .exists().withMessage('The weight field is required')
             .custom(value => notEmpty(value, 'Weight cannot be left blank'))
             .isDecimal()
             .withMessage('Weight must be a number or decimal')
@@ -23,7 +23,7 @@ export default {
             .optional({ checkFalsy: true }),
         check('name')
             .trim()
-            .exists().withMessage('Name is required')
+            .exists().withMessage('Receivers name field is required')
             .custom(value => notEmpty(value, 'Name cannot be left blank')),
         check('digit')
             .trim()
@@ -33,7 +33,7 @@ export default {
             .withMessage('Digit must be a number'),
         check('address')
             .trim()
-            .exists().withMessage('Address is required')
+            .exists().withMessage('The address field is required')
             .custom(value => notEmpty(value, 'Address cannot be left blank'))
             .isLength({ max: 100 })
             .withMessage('Text must not be more than 100 characters'),
