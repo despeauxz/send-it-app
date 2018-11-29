@@ -48,7 +48,7 @@ class ParcelController {
 
 
   /**
-   * Returns a list of Meal Options
+   * Returns a list of Parcel Options
    * @method getParcels
    * @memberof ParcelController
    * @param {object} req
@@ -68,7 +68,7 @@ class ParcelController {
    * @param {object} req
    * @param {object} res
    * @static
-   * @memberof ParcelController
+   *  @returns {(function|object)} Function next() or JSON object
    */
   static fetchParcelByID(req, res) {
     const parcelId = parseInt(req.params.parcelId);
@@ -85,6 +85,27 @@ class ParcelController {
         data: result,
       });
     }
+  }
+
+  /**
+   * @method updateParcelStatus
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @memberof ParcelController
+   */
+  static updateParcelStatus(req, res) {
+    const parcelId = parseInt(req.params.parcelId);
+    const result = parcels.find(r => r.id === parcelId);
+
+    if (!result) res.status(404).send({ error: 'The given parcel ID is invalid' });
+
+    result.status = req.body.status;
+    res.send({
+      status: 200,
+      message: 'Successfully updated parcel details',
+      data: result,
+    });
   }
 }
 
