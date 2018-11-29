@@ -30,19 +30,17 @@ class ParcelController {
       title,
       weight,
       from,
-      receiver: {
-        name,
-        digit,
-        address,
-      },
+      name,
+      digit,
+      address,
       status: 'In transit',
       createdAt: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'),
       deliveredAt: moment().add(5, 'days').format('dddd, MMMM Do YYYY, h:mm:ss a'),
-    }
+    };
 
     parcels.push(parcel);
-		res.status(201.json({
-			status: 200,
+		res.status(201).json({
+			status: 201,
 			message: 'Parcel successfully created',
 			data: parcel,
 		});

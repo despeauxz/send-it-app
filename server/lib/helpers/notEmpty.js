@@ -1,12 +1,12 @@
 /**
  * Function to check if value is empty
  * @param {string} value
- * @param {string} msg
+ * @param {string} message
  * @return {(error|bool)} returns error or true
  */
-function notEmpty(value, msg) {
+function notEmpty(value, message) {
     if (value === '') {
-      throw new Error(msg);
+      throw new Error(message);
     }
   
     return true;
