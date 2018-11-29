@@ -61,6 +61,31 @@ class ParcelController {
       data: parcels,
     });
   }
+
+  /**
+   * @method fetchParcelById
+   * @memberof ParcelController
+   * @param {object} req
+   * @param {object} res
+   * @static
+   * @memberof ParcelController
+   */
+  static fetchParcelByID(req, res) {
+    const parcelId = parseInt(req.params.parcelId);
+    const result = parcels.find(c => c.id === parcelId);
+
+    if (!result) {
+      res.status(404).send({
+        error: 'Could not fetch parcel data by given ID',
+      });
+    } else {
+      res.send({
+        status: 200,
+        message: 'Fetched data by ID successfully',
+        data: result,
+      });
+    }
+  }
 }
 
 export default ParcelController;
