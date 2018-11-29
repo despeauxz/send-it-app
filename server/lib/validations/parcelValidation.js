@@ -38,4 +38,10 @@ export default {
             .isLength({ max: 100 })
             .withMessage('Text must not be more than 100 characters'),
     ],
+    updateParcel: [
+        check('status')
+            .trim()
+            .optional()
+            .custom(value => notEmpty(value, 'Status cannot be left blank'))
+    ],
 };

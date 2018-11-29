@@ -10,7 +10,7 @@ const validation = [ValidationHandler.validate, TrimValues.trim, ValidationHandl
 
 parcelRoutes.get('/', ParcelController.getParcels);
 parcelRoutes.get('/:parcelId', ParcelController.fetchParcelByID);
-parcelRoutes.put('/:parcelId/cancel', ParcelController.updateParcelStatus);
+parcelRoutes.put('/:parcelId/cancel', parcelValidation.updateParcel, validation, ParcelController.updateParcelStatus);
 parcelRoutes.post('/', parcelValidation.createParcel, validation, ParcelController.createParcel);
 
 export default parcelRoutes;
