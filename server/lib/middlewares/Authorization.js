@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import UserController from '../controllers/UserController';
 
 /**
  * @exports
@@ -37,7 +36,7 @@ class Authorization {
   static generateToken(user) {
     const token = jwt.sign(
       {
-        id: user.userId,
+        id: user.id,
         email: user.email.toLowerCase(),
       },
       process.env.SECRET,
