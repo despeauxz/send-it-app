@@ -57,12 +57,8 @@ class Authorization {
    * @param {object} res
    * @returns {(function|object)} Function next() or JSON object
    */
-  static async refreshToken(req, res) {
-    const authUser = await models.User.findOne({ where: { email: req.email } });
-    const user = UserController.getUserObj({ ...authUser.dataValues });
-    const token = Authorization.generateToken(user);
-
-    return res.status(200).json({ user, token });
+  static refreshToken(req, res) {
+    
   }
 
   /**
@@ -75,29 +71,7 @@ class Authorization {
    * @returns {(function|object)} Function next() or JSON object
    */
   static authorize(req, res, next) {
-    const token = Authorization.getToken(req);
-
-    if (!token) return res.status(401).json({ error: 'Unauthorized' });
-
-    jwt.verify(token, process.env.SECRET, async (err, decoded) => {
-      if (err) {
-        if (err.name === 'TokenExpiredError') {
-          return res.status(401).json({ error: 'User authorization token is expired' });
-        }
-
-        return res.status(401).json({ error: 'Failed to authenticate token' });
-      }
-
-    //   const foundUser = await models.User.findOne({ where: { email: decoded.email } });
-
-    //   if (!foundUser) return res.status(401).json({ error: 'Unauthorized' });
-
-    //   req.userId = foundUser.userId;
-    //   req.email = foundUser.email;
-    //   req.role = foundUser.role;
-
-      return next();
-    });
+    
   }
 }
 

@@ -1,1 +1,1 @@
-import './parcels';
+import './routes';
