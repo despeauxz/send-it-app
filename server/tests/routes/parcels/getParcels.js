@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { expect } from 'chai';
-import app from '../../lib/app';
+import app from '../../../lib/app';
 
 describe('Parcel Routes: Get all parcels', () => {
     it('should get all parcels', (done) => {
