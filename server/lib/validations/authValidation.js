@@ -44,7 +44,7 @@ export default {
             .exists().withMessage('Password field is required')
             .isLength({ min: 6 })
             .withMessage('Password must be minimum of 6 characters'),
-        check('passwordConfirm', 'password does not match')
+        check('passwordConfirm', 'Passwords don\'t match')
             .trim()
             .exists().withMessage('Password Confirm field must be specified')
             .custom(value => notEmpty(value, 'Password Confirm field field cannot be left blank'))

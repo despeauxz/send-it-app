@@ -46,7 +46,7 @@ class UserController {
     res.status(201).send({
       status: 201,
       message: 'Account created successfuly',
-      data: user,
+      user,
       token,
     });
   }
@@ -73,7 +73,7 @@ class UserController {
     if (payload.email !== authData.email) return res.status(401).json({ error: 'Invalid credentials' });
     const isValidPassword = UserController.verifyPassword(password, authData.password);
 
-    if (!isValidPassword) return res.status(401).json({ error: 'Invalid credentials' });
+    if (!isValidPassword) return res.status(401).json({ error: 'Invalid Credentials' });
     const user = authData;
     const token = Authorization.generateToken(user);
 
