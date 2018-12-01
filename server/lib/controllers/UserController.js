@@ -70,11 +70,11 @@ class UserController {
       password,
     };
 
-    if (payload.email !== authData.email) return res.status(401).json({ error: 'Invalid credentials' });
-    const isValidPassword = UserController.verifyPassword(password, authData.password);
+    const user = authData.find(r => r.email === email);
+    if (payload.email !== user.email) return res.status(401).json({ error: 'Invalid credentials' });
+    const isValidPassword = UserController.verifyPassword(password, user.password);
 
     if (!isValidPassword) return res.status(401).json({ error: 'Invalid Credentials' });
-    const user = authData;
     const token = Authorization.generateToken(user);
 
     return res.status(200).json({

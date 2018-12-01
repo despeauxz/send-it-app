@@ -39,11 +39,11 @@ class ParcelController {
     };
 
     parcels.push(parcel);
-		res.status(201).json({
-			status: 201,
-			message: 'Parcel successfully created',
-			data: parcel,
-		});
+    res.status(201).json({
+      status: 201,
+      message: 'Parcel successfully created',
+      data: parcel,
+    });
   }
 
 
