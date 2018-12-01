@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable consistent-return */
 /* eslint-disable indent */
 import request from 'supertest';
 import { expect } from 'chai';

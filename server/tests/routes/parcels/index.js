@@ -1,3 +1,3 @@
-import './getParcels';
-import './createParcel';
-import './editParcel';
+import './getParcels.spec';
+import './createParcel.spec';
+import './editParcel.spec';

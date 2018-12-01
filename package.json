@@ -8,9 +8,8 @@
     "start:dev": "nodemon --exec babel-node -- ./server/lib/app.js",
     "clean": "rm -rf dist coverage .nyc_output",
     "build": "mkdir dist && babel server -d dist",
-    "coverage": "istanbul cover _mocha server/tests/tests.js -- --require babel-register",
-    "nyc": "nyc --extension .es6 --reporter=lcov --reporter=text mocha 'server/tests/test.js'  --compilers babel-register",
-    "test": "mocha ./server/tests/tests.js --require babel-register --recursive --timeout 50000 --exit"
+    "test": "mocha ./server/tests/tests.js --require babel-register --recursive --timeout 50000 --exit",
+    "test:coverage": "nyc --extension .es6 --reporter=lcov --reporter=text mocha 'server/tests/tests.js'  --compilers babel-register --recursive --timeout 50000 --exit"
   },
   "repository": {
     "type": "git",
@@ -33,9 +32,11 @@
     "babel-register": "^6.26.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.22.2",
