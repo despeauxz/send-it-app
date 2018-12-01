@@ -35,4 +35,39 @@ export default {
             deliveredAt: deliveredDay,
         },
     },
+
+    login: {
+        existingUser: {
+            email: 'email@gmail.com',
+            password: 'despeauxz',
+        },
+        nonExistingUser: {
+            email: 'email@gmail.com',
+            password: 'password',
+        },
+    },
+
+    signup: {
+        validUserDetails: {
+            firstname: 'Jane',
+            lastname: 'Doe',
+            username: 'Jane',
+            email: 'jane@example.com',
+            contactAddress: 'Lagos',
+            phoneNo: 45678888,
+            zipcode: 124567,
+            password: 'password',
+            passwordConfirm: 'password',
+        },
+        invalidUserDetails: {
+            firstname: 'james',
+            username: 'vent',
+            email: 'james.com',
+            contactAddress: 'Lagos',
+            phoneNo: 677899765,
+            zipcode: 124567,
+            password: 'password',
+            passwordConfirm: 'pass',
+        },
+    },
 };
