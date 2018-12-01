@@ -9,6 +9,7 @@ const parcelRoutes = express.Router();
 const validation = [ValidationHandler.validate, TrimValues.trim, ValidationHandler.isEmptyReq];
 
 parcelRoutes.get('/', ParcelController.getParcels);
+parcelRoutes.get('/:parcelId', ParcelController.fetchParcelByID);
 parcelRoutes.post('/', parcelValidation.createParcel, validation, ParcelController.createParcel);
 
 export default parcelRoutes;
