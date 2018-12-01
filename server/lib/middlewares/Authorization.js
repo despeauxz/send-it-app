@@ -43,14 +43,15 @@ class Authorization {
 
   /**
    * Authorize user
-   * @method authorize
+   * @method authenticate
    * @memberof Authorization
    * @param {object} req
    * @param {object} res
    * @param {function} next
    * @returns {(function|object)} Function next() or JSON object
    */
-  static authorize(req, res, next) {
+  // eslint-disable-next-line consistent-return
+  static authenticate(req, res, next) {
     const token = Authorization.getToken(req);
 
     if (!token) return res.status(401).json({ error: 'Unauthorized user' });
@@ -68,7 +69,7 @@ class Authorization {
 
       if (!foundUser) return res.status(401).json({ error: 'Unauthorized user' });
 
-      req.userId = foundUser.id;
+      req.id = foundUser.id;
       req.email = foundUser.email;
 
       return next();
