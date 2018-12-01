@@ -1,18 +1,11 @@
 import jwt from 'jsonwebtoken';
+import users from '../seeders/user';
 
 /**
  * @exports
  * @class Authorization
  */
 class Authorization {
-  /**
-   * @constructor
-   * @param {string} type
-   */
-  constructor(type) {
-    this.type = type;
-  }
-
   /**
    * @method getToken
    * @memberof Authorization
@@ -31,7 +24,7 @@ class Authorization {
    * @memberof Authorization
    * @param {object} user
    * @returns {string} token
-   * expires in 48 hours
+   * expires in 24 hours
    */
   static generateToken(user) {
     const token = jwt.sign(
@@ -41,23 +34,11 @@ class Authorization {
       },
       process.env.SECRET,
       {
-        expiresIn: 172800,
+        expiresIn: 86400,
       },
     );
 
     return token;
-  }
-
-  /**
-   * Resets User Token
-   * @method resetToken
-   * @memberof Users
-   * @param {object} req
-   * @param {object} res
-   * @returns {(function|object)} Function next() or JSON object
-   */
-  static refreshToken(req, res) {
-    
   }
 
   /**
@@ -70,7 +51,28 @@ class Authorization {
    * @returns {(function|object)} Function next() or JSON object
    */
   static authorize(req, res, next) {
-    
+    const token = Authorization.getToken(req);
+
+    if (!token) return res.status(401).json({ error: 'Unauthorized user' });
+
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+      if (err) {
+        if (err.name === 'TokenExpiredError') {
+          return res.status(401).json({ error: 'User authorization token is expired' });
+        }
+
+        return res.status(401).json({ error: 'Failed to authenticate token' });
+      }
+
+      const foundUser = users.find(r => r.email === decoded.email);
+
+      if (!foundUser) return res.status(401).json({ error: 'Unauthorized user' });
+
+      req.userId = foundUser.id;
+      req.email = foundUser.email;
+
+      return next();
+    });
   }
 }
 
