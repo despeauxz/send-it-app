@@ -17,7 +17,7 @@ export default {
             name: 'John Doe',
             digit: 1234456677,
             address: 'Lagos',
-            status: 'Delivered',
+            status: 'In transit',
             price: 5000,
             createdAt: currentDay,
             deliveredAt: deliveredDay,
