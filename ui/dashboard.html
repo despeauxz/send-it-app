@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./assets/css/app.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800">
+        <style>
+            body {
+                background: linear-gradient(45deg, #F4EBE5, #E3D4CA);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="dashboard">
+            <div class="dashboard-sidebar">
+                <div class="dashboard-sidebar__brand">SendIT</div>
+                <div class="dashboard-nav">
+                    <ul>
+                        <li class="dashboard-nav__item dashboard-nav__item--selected">
+                            <a href="my_trip"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_my_trip.svg"/>My Parcels</a>
+                        </li>
+                        <li class="dashboard-nav__item">
+                            <a href="../index.html"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_home.svg"/>Home</a>
+                        </li>
+                        <li class="dashboard-nav__item">
+                            <a href="signup.html"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_notifications.svg"/>Sign Up</a>
+                        </li>
+                        <li class="dashboard-nav__item">
+                            <a href="signin.html"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_notifications.svg"/>Sign In</a>
+                        </li>
+                        <li class="dashboard-nav__item">
+                            <a href="404.html"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_notifications.svg"/>Error 404</a>
+                        </li>
+                        <li class="dashboard-nav__item">
+                            <a href="settings"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_settings.svg"/>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <div class="dashboard-header__search">
+                        <input type="search" placeholder="Search..."/>
+                    </div>
+                    <div class="dashboard-header__new" data-panel-id="new">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/planner_dashboard_new_plan.svg"/>
+                    </div>
+                </div>
+                <div class="dashboard-content__panel" data-panel-id="home">
+                    <p>Home</p>
+                </div>
+
+                <div class="dashboard-content__panel dashboard-content__panel--active" data-panel-id="my_trip">
+                    <div class="dashboard-list">
+                        <div class="dashboard-list__item" data-item-id="two">
+                            <h2>Package #1</h2>
+                            <span>15 May - 23 May 2018</span>
+                            <span><b>Status:</b> Delivered</span>
+                        </div>
+                        <div class="dashboard-list__item" data-item-id="one">
+                            <h2>Package #2</h2>
+                            <span>15 May - 23 May 2018</span>
+                            <span><b>Status:</b> Delivered</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <div class="dashboard-content__panel" data-panel-id="discover_places">
+                    <p>Discover Places</p>
+                </div>
+                <div class="dashboard-content__panel" data-panel-id="notifications">
+                    <p>Notifications</p>
+                </div>
+                <div class="dashboard-content__panel" data-panel-id="settings">
+                    <p>Settings</p>
+                </div>
+            </div>
+            
+            <div class="dashboard-preview">
+                <div class="dashboard-preview__panel" data-panel-id="one">
+                    <div class="dashboard-preview__header">
+                        <h2>Package #1</h2>
+                    </div>
+                    <div class="dashboard-preview__content">
+                        <section>
+                            <form action="" class="">
+                                <div class="form-control">
+                                    <input type="text" name="weight" class="preview__input" placeholder="Weight (Kg)" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" placeholder="Destination" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" placeholder="Destination" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" value="Lagos">
+                                </div>
+                                <button >Edit</button>
+                            </form>
+                        </section>
+                    
+                        <section>
+                            <h2>Status <span>(Delivered)</span></h2>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="dashboard-preview">
+                <div class="dashboard-preview__panel" data-panel-id="new">
+                    <div class="dashboard-preview__header">
+                        <h2>Package #1</h2>
+                    </div>
+                    <div class="dashboard-preview__content">
+                        <section>
+                            <form action="" class="">
+                                <div class="form-control">
+                                    <input type="text" name="weight" class="preview__input" placeholder="Weight (Kg)" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" placeholder="Destination" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" placeholder="Destination" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" value="Lagos">
+                                </div>
+                                <button >Edit</button>
+                            </form>
+                        </section>
+                    
+                        <section>
+                            <h2>Status <span>(Delivered)</span></h2>
+                        </section>
+                    </div>
+                </div>
+                
+                <div class="dashboard-preview__panel" data-panel-id="two">
+                    <div class="dashboard-preview__header">
+                        <h2>Package #1</h2>
+                    </div>
+                    <div class="dashboard-preview__content">
+                        <section>
+                            <form action="" class="" method="POST">
+                                <div class="form-control">
+                                    <input type="text" name="weight" class="preview__input" placeholder="Weight (Kg)" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" placeholder="Destination" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" placeholder="Destination" disabled>
+                                </div>
+                                <div class="form-control">
+                                    <input type="text" name="destination" class="preview__input" value="Lagos">
+                                </div>
+                                <button >Edit</button>
+                            </form>
+                        <section>
+                            <h2>Status <span>(In transit)</span></h2>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>
