@@ -1,0 +1,17 @@
+.container {
+    display: block;
+    margin: auto;
+    background-color: coral;
+    max-width: 1200px;
+}
+
+li { list-style: none;display: inline-block}
+a { text-decoration: none;}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
