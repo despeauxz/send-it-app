@@ -2,5 +2,30 @@ language: node_js
 node_js:
   - "stable"
 
+addons:
+  code_climate:
+    repo_token: dc25e8d5b144cc25c390b9ec28e358aa4691e711ec179440882a3a834e52867b
+
+script:
+  - npm run test:coverage
+  - mv ./coverage/lcov.info ./coverage/lcov.server.info
+  - ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.server.info --output ./coverage/codeclimate.server.json
+  - npm run test:client
+  - mv ./coverage/lcov.info ./coverage/lcov.client.info
+  - ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.client.info  --output ./coverage/codeclimate.client.json
+  - ./cc-test-reporter sum-coverage -p 2 ./coverage/codeclimate.server.json ./coverage/codeclimate.client.json
+  - ./cc-test-reporter upload-coverage
+
+cache:
+  npm: true
+  directories:
+    - node_modules
+
 after_script:
-  - npm run coveralls
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - npm run build
+
+after_success:
+  - npm run test:coverage
