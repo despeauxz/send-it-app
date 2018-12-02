@@ -32,7 +32,7 @@ class Authorization {
         id: user.id,
         email: user.email.toLowerCase(),
       },
-      process.env.SECRET,
+      process.env.SECRET || 'malikgodwinonimisi',
       {
         expiresIn: 86400,
       },
