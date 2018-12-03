@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import users from '../seeders/user';
 
 /**
  * @exports
@@ -34,7 +33,7 @@ class Authorization {
       },
       process.env.SECRET || 'malikgodwinonimisi',
       {
-        expiresIn: 86400,
+        expiresIn: 60,
       },
     );
 
@@ -52,28 +51,19 @@ class Authorization {
    */
   // eslint-disable-next-line consistent-return
   static authenticate(req, res, next) {
-    const token = Authorization.getToken(req);
-
-    if (!token) return res.status(401).json({ error: 'Unauthorized user' });
-
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
-      if (err) {
-        if (err.name === 'TokenExpiredError') {
-          return res.status(401).json({ error: 'User authorization token is expired' });
-        }
-
-        return res.status(401).json({ error: 'Failed to authenticate token' });
+    try {
+      const token = Authorization.getToken(req);
+      if (!token) return res.status(401).json({ error: 'Unauthorized user' });
+      const decoded = jwt.verify(token, process.env.SECRET);
+      req.userData = decoded;
+      next();
+    } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        res.status(401).json({
+          error: 'Token Expired',
+        });
       }
-
-      const foundUser = users.find(r => r.email === decoded.email);
-
-      if (!foundUser) return res.status(401).json({ error: 'Unauthorized user' });
-
-      req.id = foundUser.id;
-      req.email = foundUser.email;
-
-      return next();
-    });
+    }
   }
 }
 
