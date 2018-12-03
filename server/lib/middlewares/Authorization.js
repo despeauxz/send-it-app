@@ -33,7 +33,7 @@ class Authorization {
       },
       process.env.SECRET || 'malikgodwinonimisi',
       {
-        expiresIn: 60,
+        expiresIn: 86400,
       },
     );
 
