@@ -4,7 +4,7 @@
   "description": "A courier delivery web application",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/lib/app.js",
+    "start": "npm run build && node ./dist/lib/app.js",
     "start:dev": "nodemon --exec babel-node -- ./server/lib/app.js",
     "clean": "rm -rf dist coverage .nyc_output",
     "build": "mkdir dist && babel server -d dist",
