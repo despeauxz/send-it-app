@@ -16,9 +16,9 @@ describe('Parcel Routes:', () => {
             });
     });
 
-    it('should get parcel by given ID', (done) => {
+    it('should get parcel by given slug', (done) => {
         request(app)
-            .get('/api/v1/parcels/123456')
+            .get('/api/v1/parcels/ouDZ2lRvjB1o')
             .end((err, res) => {
                 expect(res.statusCode).to.equal(200);
                 expect(res.body).to.be.a('object');
@@ -29,13 +29,13 @@ describe('Parcel Routes:', () => {
             });
     });
 
-    it('should return errors for invalid ID', (done) => {
+    it('should return errors for invalid slug', (done) => {
         request(app)
-            .get('/api/v1/parcels/126789')
+            .get('/api/v1/parcels/ouDZ2lRvss1o')
             .end((err, res) => {
                 expect(res.statusCode).to.equal(404);
                 expect(res.body).to.include.keys('error');
-                expect(res.body.error).to.equal('Could not fetch parcel data by given ID');
+                expect(res.body.error).to.equal('Could not fetch parcel data by given Slug');
 
                 if (err) return done(err);
             done();

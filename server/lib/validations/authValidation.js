@@ -61,7 +61,7 @@ export default {
             .withMessage('Please fill in a valid email'),
         check('password')
             .trim()
-            .exists().withMessage('Password i=field is required')
+            .exists().withMessage('Password field is required')
             .custom(value => notEmpty(value, 'Password field cannot be left blank')),
     ],
 };
