@@ -32,6 +32,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-register": "^6.26.0",
     "bcrypt": "^3.0.2",
+    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
@@ -42,6 +43,8 @@
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.22.2",
     "morgan": "^1.9.1",
+    "pg-promise": "^8.5.3",
+    "random-string": "^0.2.0",
     "supertest": "^3.3.0"
   },
   "devDependencies": {
