@@ -43,6 +43,7 @@
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.22.2",
     "morgan": "^1.9.1",
+    "nodemailer": "^4.7.0",
     "pg-promise": "^8.5.3",
     "random-string": "^0.2.0",
     "supertest": "^3.3.0"
