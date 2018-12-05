@@ -64,4 +64,14 @@ export default {
             .exists().withMessage('Password field is required')
             .custom(value => notEmpty(value, 'Password field cannot be left blank')),
     ],
+    forgotPassword: [
+        check('email')
+          .trim()
+          .normalizeEmail()
+          .exists()
+          .withMessage('Email must be specified')
+          .custom(value => notEmpty(value, 'Email field cannot be left blank'))
+          .isEmail()
+          .withMessage('Email is invalid')
+      ],
 };

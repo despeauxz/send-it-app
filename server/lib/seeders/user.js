@@ -6,7 +6,7 @@ const user = {
         firstname: 'John',
         lastname: 'Doe',
         username: 'Maverick',
-        email: 'email@gmail.com',
+        email: 'malikberwy@gmail.com',
         contactAddress: 'Lagos',
         phoneNo: 12345566,
         zipcode: 101421,
