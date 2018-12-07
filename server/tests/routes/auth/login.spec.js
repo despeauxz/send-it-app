@@ -19,7 +19,6 @@ describe('Login Routes', () => {
                 expect(res.body).to.include.keys('token');
                 expect(res.body.user.email).to.equal('email@gmail.com');
 
-                if (err) return done(err);
             done();
             });
     });
@@ -33,7 +32,6 @@ describe('Login Routes', () => {
                 expect(res.body).to.be.an('object');
                 expect(res.body.error).to.equal('Invalid Credentials');
 
-                if (err) return done(err);
             done();
             });
     });
@@ -47,7 +45,6 @@ describe('Login Routes', () => {
                 expect(res.body).to.be.an('object');
                 expect(res.body.error).to.equal('Invalid Credentials');
 
-                if (err) return done(err);
             done();
             });
     });

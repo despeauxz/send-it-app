@@ -19,7 +19,6 @@ describe('Parcel Routes: Add new parcels', () => {
                 expect(res.statusCode).to.equal(201);
                 expect(res.body).to.be.a('object');
 
-                if (err) return done(err);
             done();
             });
     });
@@ -38,7 +37,6 @@ describe('Parcel Routes: Add new parcels', () => {
                 expect(res.body.data).to.include.keys('address');
 
 
-                if (err) return done(err);
             done();
             });
     });
@@ -53,7 +51,6 @@ describe('Parcel Routes: Add new parcels', () => {
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('errors');
 
-                if (err) return done(err);
             done();
             });
     });

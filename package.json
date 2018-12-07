@@ -9,8 +9,8 @@
     "clean": "rm -rf dist coverage .nyc_output",
     "build": "mkdir dist && babel server -d dist",
     "test": "mocha ./server/tests/tests.js --require babel-register --recursive --timeout 50000 --exit",
-    "test:coverage": "nyc --extension .es6 --reporter=lcov --reporter=text mocha 'server/tests/tests.js'  --compilers babel-register --recursive --timeout 50000 --exit",
-    "coveralls": "npm run test:coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+    "nyc": "nyc --reporter=lcov --reporter=text mocha 'server/tests/tests.js'  --compilers babel-register --recursive --timeout 50000 --exit",
+    "coverage": "npm run nyc -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.22.2",
     "morgan": "^1.9.1",
+    "nodemailer": "^4.7.0",
     "pg-promise": "^8.5.3",
     "random-string": "^0.2.0",
     "supertest": "^3.3.0"

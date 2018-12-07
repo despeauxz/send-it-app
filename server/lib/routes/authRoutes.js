@@ -10,5 +10,6 @@ const validation = [ValidationHandler.validate, TrimValues.trim, ValidationHandl
 
 authRoutes.post('/signup', authValidation.register, validation, UserController.register);
 authRoutes.post('/login', authValidation.login, validation, UserController.login);
+authRoutes.post('/forgot_password', authValidation.forgotPassword, validation, UserController.forgotPassword);
 
 export default authRoutes;

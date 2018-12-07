@@ -19,6 +19,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/api', apiRoutes);
 
+app.use('/api/v1/docs', express.static('server/docs'));
+
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'Page Not found'});
+});
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {

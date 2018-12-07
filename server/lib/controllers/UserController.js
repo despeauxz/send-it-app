@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
-import Authorization from '../middlewares/Authorization';
+import randomString from 'random-string';
 import authData from '../seeders/user';
+import Authorization from '../middlewares/Authorization';
+import Mailer from '../utils/Mailer';
 
 const SALT_ROUNDS = 10;
 
@@ -71,7 +73,7 @@ class UserController {
     };
 
     const user = authData;
-    if (payload.email !== authData.email) return res.status(401).json({ error: 'Invalid credentials' });
+    if (payload.email !== authData.email) return res.status(401).json({ error: 'Invalid Credentials' });
     const isValidPassword = UserController.verifyPassword(password, authData.password);
 
     if (!isValidPassword) return res.status(401).json({ error: 'Invalid Credentials' });
@@ -105,6 +107,26 @@ class UserController {
     */
   static verifyPassword(password, hash) {
     return bcrypt.compareSync(password, hash);
+  }
+
+    /**
+   * Sends password token to user
+   * @method forgotPassword
+   * @memberof UserController
+   * @param {object} req
+   * @param {object} res
+   * @returns {(function|object)} Function next() or JSON object
+   */
+  static forgotPassword(req, res) {
+    const { email } = req.body;
+    const user = authData.email;
+    if (!user) return res.status(404).json({ error: 'This user is not registered on the platform, please signup instead' });
+
+    const token = randomString({ length: 40 });
+
+    Mailer.forgotPasswordMail(token, email);
+
+    return res.status(200).json({ message: 'A reset token has been sent to your email address' });
   }
 }
 
