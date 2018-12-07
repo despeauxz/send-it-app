@@ -1,6 +1,9 @@
 /* eslint-disable indent */
 import moment from 'moment';
+import random from 'random-string';
 import parcels from '../seeders/parcel';
+
+const unitPrice = 1000;
 
 /**
  * @exports
@@ -27,6 +30,7 @@ class ParcelController {
 
     const parcel = {
       id: parcels.length + 1,
+      slug: random({ length: 12 }),
       title,
       weight,
       from,
@@ -34,21 +38,22 @@ class ParcelController {
       digit,
       address,
       status: 'In transit',
+      price: parseInt(weight) * unitPrice,
       createdAt: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'),
       deliveredAt: moment().add(5, 'days').format('dddd, MMMM Do YYYY, h:mm:ss a'),
     };
 
     parcels.push(parcel);
-    res.status(201).json({
-      status: 201,
-      message: 'Parcel successfully created',
-      data: parcel,
-    });
+		res.status(201).json({
+			status: 201,
+			message: 'Parcel successfully created',
+			data: parcel,
+		});
   }
 
 
   /**
-   * Returns a list of Parcel Options
+   * Returns a list of Meal Options
    * @method getParcels
    * @memberof ParcelController
    * @param {object} req
@@ -58,6 +63,7 @@ class ParcelController {
   static getParcels(req, res) {
     return res.json({
       status: 200,
+      message: 'Fetched parcels successfully',
       data: parcels,
     });
   }
@@ -68,26 +74,25 @@ class ParcelController {
    * @param {object} req
    * @param {object} res
    * @static
-   *  @returns {(function|object)} Function next() or JSON object
+   * @memberof ParcelController
    */
-  static fetchParcelByID(req, res) {
-    const parcelId = parseInt(req.params.parcelId);
-    const result = parcels.find(c => c.id === parcelId);
+  static fetchParcelBySlug(req, res) {
+    const result = parcels.find(c => c.slug === req.params.parcelSlug);
 
     if (!result) {
       res.status(404).send({
-        error: 'Could not fetch parcel data by given ID',
+        error: 'Could not fetch parcel data by given Slug',
       });
     } else {
       res.send({
         status: 200,
-        message: 'Fetched data by ID successfully',
+        message: 'Fetched data by slug successfully',
         data: result,
       });
     }
   }
 
-  /**
+    /**
    * @method updateParcelStatus
    * @static
    * @param {*} req
@@ -95,10 +100,9 @@ class ParcelController {
    * @memberof ParcelController
    */
   static updateParcelStatus(req, res) {
-    const parcelId = parseInt(req.params.parcelId);
-    const result = parcels.find(r => r.id === parcelId);
+    const result = parcels.find(r => r.slug === req.params.parcelSlug);
 
-    if (!result) res.status(404).send({ error: 'The given parcel ID is invalid' });
+    if (!result) res.status(404).send({ error: 'The given parcel slug is invalid' });
 
     result.status = req.body.status;
     res.send({

@@ -10,29 +10,25 @@ export default {
 
     createParcel: {
         createParcelDetails: {
-            id: 123456,
+            id: 1,
             title: 'Package #1',
             weight: 2,
             from: 'Abuja',
             name: 'John Doe',
             digit: 1234456677,
             address: 'Lagos',
-            status: 'In transit',
-            price: 5000,
             createdAt: currentDay,
             deliveredAt: deliveredDay,
         },
 
         invalidParcelDetails: {
-            id: 67576,
+            id: 6,
             from: 'Port Harcourt',
             name: 'John Doe',
             digit: 1234456677,
             address: 'Lagos',
             status: 'In transit',
-            price: 2000,
             createdAt: currentDay,
-            deliveredAt: deliveredDay,
         },
     },
 
