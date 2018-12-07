@@ -11,7 +11,6 @@ describe('Parcel Routes:', () => {
                 expect(res.statusCode).to.equal(200);
                 expect(res.body.data).to.be.a('array');
 
-                if (err) return done(err);
             done();
             });
     });
@@ -24,7 +23,6 @@ describe('Parcel Routes:', () => {
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('data');
 
-                if (err) return done(err);
             done();
             });
     });
@@ -37,7 +35,6 @@ describe('Parcel Routes:', () => {
                 expect(res.body).to.include.keys('error');
                 expect(res.body.error).to.equal('Could not fetch parcel data by given Slug');
 
-                if (err) return done(err);
             done();
             });
     });

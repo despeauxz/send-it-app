@@ -19,7 +19,6 @@ describe('Signup Routes', () => {
                 expect(res.body).to.include.keys('token');
                 expect(res.body.user.email).to.equal('jane@example.com');
 
-                if (err) return done(err);
             done();
             });
     });
@@ -35,7 +34,6 @@ describe('Signup Routes', () => {
                 expect(res.body.errors.email.msg).to.equal('Please fill in a valid email');
                 expect(res.body.errors.passwordConfirm.msg).to.equal('Passwords don\'t match');
 
-                if (err) return done(err);
             done();
             });
     });

@@ -73,7 +73,7 @@ class UserController {
     };
 
     const user = authData;
-    if (payload.email !== authData.email) return res.status(401).json({ error: 'Invalid credentials' });
+    if (payload.email !== authData.email) return res.status(401).json({ error: 'Invalid Credentials' });
     const isValidPassword = UserController.verifyPassword(password, authData.password);
 
     if (!isValidPassword) return res.status(401).json({ error: 'Invalid Credentials' });

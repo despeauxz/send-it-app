@@ -1,0 +1,26 @@
+{
+    "check-coverage": true,
+    "per-file": true,
+    "lines": [21.43, 79.31],
+    "require": ["babel-register"],
+    "exclude": [
+        "**/*.test.js",
+        "**/*.spec.js",
+        "**/__tests__/**",
+        "**/node_modules/**",
+        "client/",
+        "server/config",
+        "server/coverage/**",
+        "server/tests/**",
+        "server/src/models/index.js",
+        "server/lib/emailTemplates",
+        "server/lib/utils",
+        "server/test{,-*}.js",
+        "server/docs.**"
+    ],
+    "reporter": ["lcov", "json", "text"],
+    "sourceMap": false,
+    "instrument": false,
+    "cache": true,
+    "report-dir": "./coverage"
+}

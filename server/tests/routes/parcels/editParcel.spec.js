@@ -14,7 +14,6 @@ describe('Parcel Routes: Edit parcel details', () => {
                 expect(res.statusCode).to.equal(200);
                 expect(res.body).to.be.a('object');
 
-                if (err) return done(err);
             done();
             });
     });
