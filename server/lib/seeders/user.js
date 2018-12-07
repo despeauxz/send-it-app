@@ -7,6 +7,7 @@ const user = {
         lastname: 'Doe',
         username: 'Maverick',
         email: 'email@gmail.com',
+        isAdmin: false,
         contactAddress: 'Lagos',
         phoneNo: 12345566,
         zipcode: 101421,
